@@ -4,6 +4,9 @@
 
 ## 💻 What it does
 
+User's can also mint their data to earn an exclusive non-fungible token. If they so choose, this digital token and the encrypted data it represents can be held or “burned” for future discounts on healthcare services or insurance premiums.
+User need to loging with their FitBit account, acting as a "proof of health" creating an exclusive token/point system that we can either use to ensure adherence of patients to earn heart points to be used for various purpose.
+
 ## ⚙️How we built it
 
 - ML: Python, Skikit-Learn, TensorFlow
@@ -11,6 +14,7 @@
 - Backend: Django
 - Database: CockroachDB
 - Authentication: Auth0
+- IPFS: 
 
 ## ☁ Best use of Linode Cloud
 
