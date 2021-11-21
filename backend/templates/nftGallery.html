@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>NFT Gallery | HealthCrypto</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/8744931b12.js" crossorigin="anonymous"></script>
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
@@ -491,174 +492,8 @@
     </div>
     <section class="home-section">
 
-        <div class="calc-outer-wrap">
-            <div id="form-error" style="display:none;"></div>
-            <form class="calc-form" id="calc-form">
-                <div class="form-fields">
-
-                    <div class="field-outer">
-                        <label for="distance" class="top-label">Age:</label>
-                        <div class="field-items">
-                            <div class="field field-large">
-                                <input type="text" name="age" id="age" inputmode="numeric" pattern="[0-9]*">
-                            </div><!--  /.field-large -->
-
-                            <div class="field field-medium">
-                                <select name="gender">
-                                    <option value="Female">Female</option>
-                                    <option value="Male">Male</option>
-
-                                </select>
-
-                            </div><!--  /.field-small -->
-                        </div><!--  /.field-items -->
-                    </div><!--  /.field-outer -->
-
-                    <div class="field-outer">
-                        <label for="height" class="top-label">Height:</label>
-                        <div class="field-items">
-                            <div class="field">
-                                <input type="text" name="height_ft" id="height-ft" inputmode="numeric" pattern="[0-9]*">
-                                <label for="height-ft">feet</label>
-                            </div><!--  /.field -->
-                            <div class="field">
-                                <input type="text" name="height_in" id="height-in" inputmode="numeric" pattern="[0-9]*">
-                                <label for="height-in">inches</label>
-                            </div><!--  /.field -->
-                            <div class="field">
-                                <input type="text" name="height_cm" id="height-cm" inputmode="numeric" pattern="[0-9]*">
-                                <label for="height-cm">or centimeters</label>
-                            </div><!--  /.field -->
-                        </div><!--  /.field-items -->
-                    </div><!--  /.field-outer -->
-
-                    <div class="field-outer">
-                        <label for="weight" class="top-label">Your weight:</label>
-                        <div class="field-items">
-                            <div class="field field-large">
-                                <input type="text" name="weight" id="weight" inputmode="numeric" pattern="[0-9]*">
-                            </div><!--  /.field-large -->
-                            <div class="field field-small">
-                                <select name="weight_unit">
-                                    <option value="lb">lb</option>
-                                    <option value="kg">kg</option>
-                                </select>
-                            </div><!--  /.field-small -->
-                        </div><!--  /.field-items -->
-                    </div><!--  /.field-outer -->
-                    <div class="btn-wrap field-outer">
-                        <button class="form-submit">Calculate</button>
-                    </div>
-                </div><!--  /.form fields -->
-
-
-            </form>
-            <div id="results" style="display:none;"></div>
-        </div><!--  /.calc-outer-wrap -->
     </section>
 
-    <script>
-        (function () {
-            const form = document.getElementById('calc-form');
-            const results = document.getElementById('results');
-            const errors = document.getElementById('form-error');
-
-            /**
-             * Display a form validation error
-             *
-             * @param   {String}  msg  The validation message
-             * @return  {Boolen}       Returns false
-             */
-            function errorMessage(msg) {
-                errors.innerHTML = msg;
-                errors.style.display = '';
-                return false;
-            }
-
-            /**
-             * Display the calculation results
-             *
-             * @param   {Integer}  calories   The calories burned
-             * @param   {Integer}  distance   The distance run
-             * @param   {String}   unit       The distance unit (miles or kilometers)
-             * @param   {Integer}  burnRate   The calories per distance burn rate
-             * @param   {Integer}  calsPerHr  The calories burned per hour
-             */
-            function showResults(calories) {
-                results.innerHTML = `<p>Your basal metabolic rate (BMR) is: <strong>${(calories).toFixed(2)} </strong> calories a day.</p><a href="#" id="rs">revise</a>`;
-                results.style.display = ''
-                form.style.display = 'none'
-                errors.style.display = 'none'
-            }
-
-            /**
-             * Hide the results and reset the form
-             */
-            function resetForm(e) {
-                if (e.target.id = 'rs') {
-                    e.preventDefault();
-                    results.style.display = 'none';
-                    form.style.display = '';
-                    form.reset()
-                }
-            }
-
-            /**
-             * Handle form submit
-             */
-            function submitHandler(e) {
-                e.preventDefault();
-
-                // Age
-                let age = parseFloat(form.age.value);
-                //let unit = form.distance_unit.value;
-                if (isNaN(age) || age < 0) {
-                    return errorMessage('Please enter a valid age');
-                }
-
-                // Height
-                let heightCM = parseFloat(form.height_cm.value);
-                if (isNaN(heightCM) || heightCM < 0) {
-
-                    let heightFeet = parseFloat(form.height_ft.value);
-                    if (isNaN(heightFeet) || heightFeet < 0) {
-                        return errorMessage('Please enter a valid Height in feet or centimeters');
-                    }
-                    let heightInches = parseFloat(form.height_in.value);
-                    if (isNaN(heightInches) || heightInches < 0) {
-                        heightInches = 0;
-                    }
-                    heightCM = (2.54 * heightInches) + (30.4 * heightFeet)
-
-                }
-
-                let weight = parseFloat(form.weight.value);
-                if (isNaN(weight) || weight < 0) {
-                    return errorMessage('Please enter a valid weight');
-                }
-
-                if (form.weight_unit.value == 'lb') {
-                    weight = 0.453592 * weight;
-                }
-
-                let calories = 0;
-                if (form.gender.value == 'Female') {
-                    //females =  655.09 + 9.56 x (Weight in kg) + 1.84 x (Height in cm) - 4.67 x age   
-                    calories = 655.09 + (9.56 * weight) + (1.84 * heightCM) - (4.67 * age);
-                } else {
-                    calories = 66.47 + (13.75 * weight) + (5 * heightCM) - (6.75 * age);
-                }
-
-                // Display results
-                showResults(calories);
-            }
-
-            // Add Event Listeners
-            form.addEventListener('submit', submitHandler);
-            results.addEventListener('click', resetForm, true);
-
-        })();
-    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.1/src/js.cookie.min.js"></script>
 
@@ -690,6 +525,8 @@
         console.log(Cookies.get('csrftoken'));
 
     </script>
+    <script src="/static/js/nft/zim.min.js"></script>
+
 </body>
 
 </html>
