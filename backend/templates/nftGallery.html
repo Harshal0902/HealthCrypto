@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <title>NFT Gallery | HealthCrypto</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/8744931b12.js" crossorigin="anonymous"></script>
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/8744931b12.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
 </head>
@@ -213,6 +213,10 @@
             width: calc(100% - 78px);
             transition: all 0.5s ease;
             z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .sidebar.open~.home-section {
@@ -234,216 +238,99 @@
             }
         }
 
-        .calc-outer-wrap {
-            margin: 0 auto;
-            padding: 0.625rem;
-            padding-top: 150px;
-            font-size: 1rem;
-            line-height: 1.3;
-            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-        }
-
-        .form-fields {
+        .course {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: top;
+            max-width: 100%;
+            overflow: hidden;
+            width: 700px;
         }
 
-        .field-outer {
-            width: 48%;
+        .course h6 {
+            opacity: 0.6;
+            margin: 0;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
-        label,
-        input,
-        select {
-            font-size: 1rem;
-            line-height: 1.3;
-            display: block;
+        .course h2 {
+            letter-spacing: 1px;
+            margin: 10px 0;
         }
 
-        input,
-        select {
-            height: 1.75rem;
-            border: 1px solid #bbb;
-            width: 100%;
-            background: #fff;
-            padding: 0 0.325rem;
-            border-radius: 0.1875rem;
-            transition: box-shadow 200ms ease-in-out;
-            box-shadow: inset 0 0 0 0 #59e7ed;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
+        .course-preview {
+            background-color: #2A265F;
+            color: #fff;
+            padding: 30px;
+            max-width: 250px;
         }
 
-        input:focus,
-        select:focus {
-            outline: 0;
-            box-shadow: inset 0 -3px 0 -1px #59e7ed;
-            border-radius: 0.1875rem 0.1875rem 1px 1px;
-        }
-
-        select:-moz-focusring {
-            color: transparent;
-            text-shadow: 0 0 0 #000;
-        }
-
-        select::-ms-expand {
-            display: none;
-        }
-
-        .field-items {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .field-items label {
-            font-size: 0.75rem;
-            color: #999;
-        }
-
-        .field {
+        .course-preview a {
+            color: #fff;
             display: inline-block;
-            width: 32%;
+            font-size: 12px;
+            opacity: 0.6;
+            margin-top: 30px;
+            text-decoration: none;
         }
 
-        .field+.field {
-            margin-left: 3px;
-        }
-
-        .field-large {
-            flex: 1;
-            width: 67%;
-        }
-
-        .field-small {
-            width: 3em;
-        }
-
-        .top-label {
-            font-weight: bold;
-            font-size: 0.875rem;
-            line-height: 1.4;
-            display: block;
-        }
-
-        .btn-wrap {
-            align-self: flex-end;
-        }
-
-        .form-submit {
-            background: #59e7ed;
-            display: block;
-            border: 0;
-            width: 100%;
-            font-size: 1rem;
-            border-radius: 0.1875rem;
-            height: 1.75rem;
-            font-weight: 600;
-            color: #fff;
-            box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.15);
-            cursor: pointer;
-        }
-
-        .form-submit:hover,
-        .form-submit:focus {
-            background: #2be0e8;
-            box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.3);
-            outline: 0;
-        }
-
-        .form-submit:active {
-            box-shadow: none;
-        }
-
-        #form-error {
-            color: #fff;
-            margin-bottom: 0.5rem;
-            text-align: center;
-            color: #c1000b;
-            padding: 3px;
-            font-size: 0.875rem;
-        }
-
-        #results {
+        .course-info {
+            padding: 30px;
             position: relative;
             width: 100%;
-            height: 110px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
-        #results p {
-            margin: 0;
-        }
-
-        #results #rs {
+        .progress-container {
             position: absolute;
-            bottom: 10px;
-            right: 10px;
-            font-size: 0.875rem;
-            color: #aaa;
+            top: 30px;
+            right: 30px;
+            text-align: right;
+            width: 150px;
         }
 
-        #results #rs:hover {
-            color: #9951FF;
+        .progress {
+            background-color: #ddd;
+            border-radius: 3px;
+            height: 5px;
+            width: 100%;
+        }
+
+        .progress::after {
+            border-radius: 3px;
+            background-color: #2A265F;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 5px;
+            width: 66%;
+        }
+
+        .progress-text {
+            font-size: 10px;
+            opacity: 0.6;
+            letter-spacing: 1px;
+        }
+
+        .btn {
+            background-color: #2A265F;
+            border: 0;
+            border-radius: 50px;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+            color: #fff;
+            font-size: 16px;
+            padding: 12px 25px;
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            letter-spacing: 1px;
         }
     </style>
     <div class="sidebar">
         <div class="logo-details">
-            <div class="logo_name">
-                <div class="sidebar">
-                    <div class="logo-details">
-                        <div class="logo_name">HealthCrypto</div>
-                        <i class='bx bx-menu' id="btn"></i>
-                    </div>
-                    <ul class="nav-list">
-                        <li>
-                            <a href="/">
-                                <i class='bx bx-grid-alt'></i>
-                                <span class="links_name">Dashboard</span>
-                            </a>
-                            <span class="tooltip">Dashboard</span>
-                        </li>
-                        <li>
-                            <a href="/diagnose">
-                                <i class='fas fa-diagnoses'></i>
-                                <span class="links_name">Health</span>
-                            </a>
-                            <span class="tooltip">Health</span>
-                        </li>
-                        <li>
-                            <a href="/calories">
-                                <i class='bx bx-calculator'></i>
-                                <span class="links_name">Calorie Calculator</span>
-                            </a>
-                            <span class="tooltip">Calorie Calculator</span>
-                        </li>
-                        <li>
-                            <a href="/exercise">
-                                <i class='bx bx-body'></i>
-                                <span class="links_name">Exercise</span>
-                            </a>
-                            <span class="tooltip">Exercise</span>
-                        </li>
-                        <li>
-                            <a href="/nftgallery">
-                                <i class='bx bx-bitcoin'></i>
-                                <span class="links_name">NFT Gallery</span>
-                            </a>
-                            <span class="tooltip">NFT Gallery</span>
-                        </li>
-
-                        <li class="profile">
-                            <a href="/signout">
-                                <i class='bx bx-log-out' id="log_out"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <div class="logo_name">HealthCrypto</div>
             <i class='bx bx-menu' id="btn"></i>
         </div>
         <ul class="nav-list">
@@ -491,7 +378,22 @@
         </ul>
     </div>
     <section class="home-section">
-
+        <div class="course">
+            <div class="course-preview">
+                <h2>NFT Gallery</h2>
+            </div>
+            <div class="course-info">
+                <div class="progress-container">
+                    <div class="progress"></div>
+                    <span class="progress-text">
+                        18/30 days
+                    </span>
+                </div>
+                <h6>Week 4</h6>
+                <h2>2.1.0</h2>
+                <button class="btn">Continue</button>
+            </div>
+        </div>
     </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -525,8 +427,6 @@
         console.log(Cookies.get('csrftoken'));
 
     </script>
-    <script src="/static/js/nft/zim.min.js"></script>
-
 </body>
 
 </html>
